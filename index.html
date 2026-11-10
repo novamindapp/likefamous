@@ -59,6 +59,7 @@
         font-size: 16px;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
+        padding-bottom: 92px;
       }
       h1, h2, h3, .display { font-family: "Bricolage Grotesque", "Archivo", sans-serif; }
       button { font: inherit; cursor: pointer; }
@@ -68,28 +69,24 @@
 
       .wrap { max-width: 1060px; margin: 0 auto; padding: 0 18px 40px; }
 
-      /* ---------- top bar ---------- */
-      .topbar {
+      /* ---------- brand strip ---------- */
+      .brandbar {
         position: sticky; top: 0; z-index: 40;
         background: var(--bg);
         border-bottom: 1px solid var(--line);
       }
-      .topbar-in {
-        max-width: 1060px; margin: 0 auto; padding: 12px 18px;
+      .brandbar-in {
+        max-width: 1060px; margin: 0 auto; padding: 10px 18px;
         display: flex; align-items: center; gap: 12px;
       }
-      .wordmark { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -.02em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+      .wordmark { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -.02em; color: var(--ink); text-decoration: none; white-space: nowrap; }
       .wordmark em { font-style: normal; color: var(--accent-deep); }
-      .topbar .spacer { flex: 1; }
-      .balance-pill {
-        display: inline-flex; align-items: center; gap: 7px;
-        background: var(--panel); color: var(--panel-ink);
-        border: none; border-radius: 999px; padding: 7px 14px 7px 10px;
-        font-weight: 700; font-size: 15px;
+      .brandbar .spacer { flex: 1; }
+      .demo-tag {
+        font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+        background: var(--card-2); color: var(--muted);
+        border-radius: 999px; padding: 3px 9px; white-space: nowrap;
       }
-      .balance-pill svg { width: 18px; height: 18px; }
-      .balance-pill.bump { animation: bump .45s ease; }
-      @keyframes bump { 30% { transform: scale(1.12); } }
       .buy-btn {
         display: inline-flex; align-items: center; gap: 8px;
         background: var(--accent); color: var(--accent-ink);
@@ -102,59 +99,115 @@
       }
       @media (prefers-color-scheme: dark) { .soon-tag { background: rgba(0,0,0,.35); color: #d9f99d; } }
 
-      /* ---------- balance panel ---------- */
-      .panel {
-        margin-top: 22px;
-        background: var(--panel); color: var(--panel-ink);
-        border-radius: 20px; padding: 26px 28px;
-        display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px;
-        box-shadow: var(--shadow);
+      /* ---------- market header ---------- */
+      .market-head {
+        display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+        padding: 26px 0 4px;
       }
-      .panel .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--panel-muted); margin: 0 0 4px; }
-      .balance-big { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(44px, 7vw, 64px); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
-      .balance-big small { font-size: 20px; font-weight: 700; color: var(--accent); margin-left: 6px; }
-      .panel .sub { color: var(--panel-muted); margin: 10px 0 0; font-size: 15px; max-width: 42ch; }
-      .panel-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-      .btn {
-        display: inline-flex; align-items: center; gap: 8px;
-        border-radius: 999px; padding: 10px 20px; font-weight: 700; font-size: 15px;
-        border: 1px solid transparent; text-decoration: none;
-        transition: transform .12s ease, background .12s ease;
+      .market-head h1 { margin: 0; font-size: clamp(38px, 6vw, 52px); font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+      .market-head .sub { color: var(--muted); margin: 8px 0 0; font-size: 15px; max-width: 52ch; }
+      .balance-pill {
+        display: inline-flex; align-items: center; gap: 7px; flex: 0 0 auto;
+        background: transparent; color: var(--accent-deep);
+        border: none; padding: 6px 2px;
+        font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 26px;
       }
-      .btn:active { transform: scale(.97); }
-      .btn-lime { background: var(--accent); color: var(--accent-ink); }
-      .btn-ghost-light { background: transparent; color: var(--panel-ink); border-color: rgba(242,244,236,.35); }
-      .rates { align-self: center; }
-      .rates h3 { margin: 0 0 10px; font-size: 15px; color: var(--panel-ink); }
-      .rate-row { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0; border-bottom: 1px dashed rgba(242,244,236,.18); font-size: 14.5px; color: var(--panel-muted); }
-      .rate-row:last-child { border-bottom: none; }
-      .rate-row b { color: var(--accent); font-weight: 700; white-space: nowrap; }
-      @media (max-width: 720px) { .panel { grid-template-columns: 1fr; padding: 22px; } }
+      .balance-pill svg { width: 24px; height: 24px; color: var(--accent-deep); }
+      .balance-pill small { font-family: "Archivo", sans-serif; font-size: 14px; font-weight: 700; }
+      .balance-pill.bump { animation: bump .45s ease; }
+      @keyframes bump { 30% { transform: scale(1.1); } }
 
-      /* ---------- tabs ---------- */
-      .tabs {
-        display: flex; gap: 6px; margin: 24px 0 18px; padding: 5px;
-        background: var(--card-2); border-radius: 999px; overflow-x: auto; scrollbar-width: none;
+      /* ---------- platform tabs ---------- */
+      .plat-tabs {
+        display: flex; gap: 4px; margin-top: 18px;
+        border-bottom: 1px solid var(--line);
+        overflow-x: auto; scrollbar-width: none;
       }
-      .tabs::-webkit-scrollbar { display: none; }
-      .tab {
-        flex: 1 0 auto; border: none; background: transparent; color: var(--muted);
-        border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 14.5px; white-space: nowrap;
+      .plat-tabs::-webkit-scrollbar { display: none; }
+      .plat-tab {
+        display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto;
+        background: transparent; border: none; color: var(--faint);
+        padding: 10px 12px 12px; font-weight: 700; font-size: 15px; white-space: nowrap;
+        border-bottom: 3px solid transparent; margin-bottom: -1px;
       }
-      .tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
-      .tab .count { background: var(--accent); color: var(--accent-ink); border-radius: 999px; font-size: 11.5px; padding: 1px 7px; margin-left: 6px; vertical-align: 1px; }
+      .plat-tab svg { width: 19px; height: 19px; }
+      .plat-tab[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--tc, var(--accent)); }
 
-      /* ---------- filters ---------- */
+      /* ---------- section heads ---------- */
+      .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin: 30px 0 14px; scroll-margin-top: 70px; }
+      .sec-head h2 { margin: 0; font-size: 22px; letter-spacing: -.01em; }
+      .sec-head .link-btn { background: none; border: none; color: var(--accent-deep); font-weight: 700; font-size: 14.5px; padding: 4px 0; white-space: nowrap; }
+      .sec-head .count-note { color: var(--faint); font-size: 13.5px; font-weight: 600; }
+
+      /* ---------- top tasks rail ---------- */
+      .rail {
+        display: flex; gap: 14px; overflow-x: auto;
+        padding: 4px 2px 16px; scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+      }
+      .top-card {
+        flex: 0 0 178px; scroll-snap-align: start;
+        background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+        box-shadow: var(--shadow); padding: 18px 14px 14px;
+        display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px;
+      }
+      .top-card.leaving { opacity: 0; transform: translateY(-4px); transition: opacity .3s ease, transform .3s ease; }
+      .avatar {
+        position: relative; width: 68px; height: 68px; border-radius: 50%;
+        display: grid; place-items: center; margin-bottom: 8px;
+        font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 24px; color: #fff;
+      }
+      .avatar .badge {
+        position: absolute; right: -3px; bottom: -3px; width: 24px; height: 24px; border-radius: 50%;
+        display: grid; place-items: center; color: #fff; border: 2px solid var(--card);
+      }
+      .avatar .badge svg { width: 13px; height: 13px; }
+      .av-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+      .av-tiktok { background: #3f4a3a; }
+      .av-telegram { background: #229ed9; }
+      .av-youtube { background: #ff0033; }
+      .av-x { background: #3a3f35; }
+      .top-title { font-weight: 700; font-size: 14.5px; line-height: 1.3; overflow-wrap: anywhere; }
+      .top-cat { color: var(--faint); font-size: 13px; }
+      .top-pts {
+        margin-top: 10px; width: 100%;
+        display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+        font-weight: 800; font-size: 15px; color: var(--accent-ink);
+        background: var(--accent); border-radius: 999px; padding: 8px 10px;
+      }
+      .top-pts svg { width: 15px; height: 15px; }
+      .top-act { margin-top: 8px; width: 100%; }
+      .top-act .btn-sm { width: 100%; }
+
+      /* ---------- categories ---------- */
+      .cat-list { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+      .cat-row {
+        display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+        background: transparent; border: none; border-bottom: 1px solid var(--line);
+        padding: 15px 17px; color: var(--ink);
+      }
+      .cat-row:last-child { border-bottom: none; }
+      .cat-row:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+      .cat-ico { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+      .cat-ico svg { width: 22px; height: 22px; }
+      .cat-friends { background: var(--accent-deep); }
+      .cat-like { background: #db2777; }
+      .cat-comment { background: #7c3aed; }
+      .cat-main { flex: 1; min-width: 0; }
+      .cat-main b { display: block; font-size: 16.5px; }
+      .cat-main span { color: var(--muted); font-size: 13.5px; }
+      .cat-count { font-weight: 800; font-size: 16px; color: var(--ink); white-space: nowrap; }
+      .cat-chev { color: var(--faint); flex: 0 0 auto; }
+      .cat-chev svg { width: 18px; height: 18px; display: block; }
+
+      /* ---------- filters (task types) ---------- */
       .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
       .chip {
         display: inline-flex; align-items: center; gap: 7px;
         border: 1px solid var(--line); background: var(--card); color: var(--muted);
         border-radius: 999px; padding: 7px 13px; font-weight: 600; font-size: 13.5px;
       }
-      .chip svg { width: 15px; height: 15px; }
       .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-      .filters .divider { width: 1px; background: var(--line); margin: 4px 2px; }
-      @media (max-width: 560px) { .filters .divider { display: none; } }
 
       /* ---------- task cards ---------- */
       .task-list { display: grid; gap: 12px; }
@@ -207,8 +260,64 @@
       .empty h3 { color: var(--ink); margin: 0 0 6px; font-size: 18px; }
       .empty p { margin: 0 auto; max-width: 44ch; }
 
+      /* ---------- accounts ---------- */
+      .acct-list { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+      .acct-row {
+        display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+        background: transparent; border: none; border-bottom: 1px solid var(--line);
+        padding: 14px 17px; color: var(--ink);
+      }
+      .acct-row:last-child { border-bottom: none; }
+      .acct-row:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+      .acct-row .picon { border-radius: 50%; width: 44px; height: 44px; }
+      .acct-main { flex: 1; min-width: 0; }
+      .acct-main b { display: block; font-size: 16px; }
+      .acct-main span { color: var(--muted); font-size: 13.5px; }
+      .acct-main span.linked { color: var(--accent-deep); font-weight: 600; }
+
+      /* ---------- notice ---------- */
+      .notice {
+        display: flex; gap: 11px; margin-top: 22px;
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+        border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+        border-radius: var(--radius); padding: 15px 17px; font-size: 14.5px;
+      }
+      .notice svg { flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; color: var(--accent-deep); }
+      .notice p { margin: 0; }
+
+      /* ---------- balance panel ---------- */
+      .panel {
+        margin-top: 22px;
+        background: var(--panel); color: var(--panel-ink);
+        border-radius: 20px; padding: 26px 28px;
+        display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px;
+        box-shadow: var(--shadow);
+      }
+      .panel .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--panel-muted); margin: 0 0 4px; }
+      .balance-big { font-family: "Bricolage Grotesque", sans-serif; font-size: clamp(44px, 7vw, 64px); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+      .balance-big small { font-size: 20px; font-weight: 700; color: var(--accent); margin-left: 6px; }
+      .panel .sub { color: var(--panel-muted); margin: 10px 0 0; font-size: 15px; max-width: 42ch; }
+      .rates { align-self: center; }
+      .rates h3 { margin: 0 0 10px; font-size: 15px; color: var(--panel-ink); }
+      .rate-row { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0; border-bottom: 1px dashed rgba(242,244,236,.18); font-size: 14.5px; color: var(--panel-muted); }
+      .rate-row:last-child { border-bottom: none; }
+      .rate-row b { color: var(--accent); font-weight: 700; white-space: nowrap; }
+      @media (max-width: 720px) { .panel { grid-template-columns: 1fr; padding: 22px; } }
+
+      .view-head { padding: 26px 0 4px; }
+      .view-head h1 { margin: 0; font-size: clamp(32px, 5vw, 44px); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; }
+      .view-head .sub { color: var(--muted); margin: 8px 0 0; font-size: 15px; max-width: 56ch; }
+
       /* ---------- forms & panels ---------- */
-      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        border-radius: 999px; padding: 10px 20px; font-weight: 700; font-size: 15px;
+        border: 1px solid transparent; text-decoration: none;
+        transition: transform .12s ease, background .12s ease;
+      }
+      .btn:active { transform: scale(.97); }
+      .btn-lime { background: var(--accent); color: var(--accent-ink); }
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; margin-top: 18px; }
       @media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
       .box { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
       .box h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -.01em; }
@@ -255,7 +364,7 @@
       .icon-btn svg { width: 18px; height: 18px; display: block; }
       .progress { height: 8px; border-radius: 999px; background: var(--card-2); overflow: hidden; margin: 10px 0 6px; }
       .progress i { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .5s ease; }
-      .camp-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+      .camp-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
       .status { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; }
       .status.active { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent-deep); }
       .status.done { background: var(--card-2); color: var(--muted); }
@@ -294,8 +403,26 @@
       footer { margin-top: 26px; color: var(--faint); font-size: 13px; text-align: center; }
       footer p { margin: 4px 0; }
 
+      /* ---------- bottom nav ---------- */
+      .bottomnav {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+        background: var(--card); border-top: 1px solid var(--line);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .bottomnav-in {
+        max-width: 1060px; margin: 0 auto;
+        display: grid; grid-template-columns: repeat(4, 1fr);
+      }
+      .bnav-btn {
+        display: flex; flex-direction: column; align-items: center; gap: 2px;
+        background: transparent; border: none; color: var(--faint);
+        padding: 9px 4px 8px; font-size: 12px; font-weight: 700;
+      }
+      .bnav-btn svg { width: 23px; height: 23px; }
+      .bnav-btn[aria-selected="true"] { color: var(--accent-deep); }
+
       .toast {
-        position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 80px);
+        position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 80px);
         background: var(--panel); color: var(--panel-ink); border-radius: 999px;
         padding: 11px 20px; font-weight: 600; font-size: 14.5px; z-index: 60;
         box-shadow: var(--shadow); transition: transform .3s ease, opacity .3s ease, visibility .3s;
@@ -304,13 +431,13 @@
       }
       .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
       @media (max-width: 560px) {
-        .topbar-in { padding: 10px 12px; gap: 8px; flex-wrap: wrap; }
-        .wordmark { font-size: 19px; }
-        .buy-btn { padding: 7px 12px; font-size: 13px; margin-left: auto; }
-        .balance-pill { padding: 6px 11px 6px 8px; font-size: 14px; }
-        .tabs { flex-wrap: wrap; border-radius: 18px; }
-        .tab { flex: 1 1 42%; }
+        .brandbar-in { padding: 9px 12px; gap: 8px; }
+        .wordmark { font-size: 18px; }
+        .buy-btn { padding: 7px 12px; font-size: 13px; }
+        .market-head { padding-top: 20px; }
+        .balance-pill { font-size: 22px; }
         .task-meta { white-space: normal; overflow: visible; }
+        .demo-tag { display: none; }
       }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }
@@ -319,61 +446,74 @@
     </style>
   </head>
   <body>
-    <header class="topbar">
-      <div class="topbar-in">
+    <header class="brandbar">
+      <div class="brandbar-in">
         <a class="wordmark" href="#">Like<em>Famous</em></a>
+        <span class="demo-tag">Public demo</span>
         <span class="spacer"></span>
-        <button class="balance-pill" id="balancePill" type="button" title="Your points balance">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#a3e635"/><path d="M12 6.5v11M15 8.6c-.6-.8-1.7-1.2-3-1.2-1.9 0-3.2 1-3.2 2.3 0 3.1 6.4 1.7 6.4 4.6 0 1.3-1.4 2.3-3.2 2.3-1.4 0-2.6-.5-3.2-1.4" stroke="#16200a" stroke-width="1.7" stroke-linecap="round"/></svg>
-          <span id="balanceTop">100</span>&nbsp;pts
-        </button>
         <button class="buy-btn" id="buyTopBtn" type="button">Buy points <span class="soon-tag">Coming soon</span></button>
       </div>
     </header>
 
     <div class="wrap">
-      <section class="panel" aria-label="Your balance">
-        <div>
-          <p class="label">Your balance</p>
-          <div class="balance-big"><span id="balanceBig">100</span><small>points</small></div>
-          <p class="sub">Complete tasks for other members to earn points, then spend your points promoting your own profiles — more follows, likes and comments, in that order.</p>
-          <div class="panel-actions">
-            <button class="btn btn-lime" type="button" data-goto="earn">Earn points</button>
-            <button class="btn btn-ghost-light" type="button" data-goto="promote">Promote my profile</button>
+      <!-- ============ MARKET ============ -->
+      <section id="tab-market" role="tabpanel" aria-label="Task market">
+        <div class="market-head">
+          <div>
+            <h1>Market</h1>
+            <p class="sub">Complete tasks for other members to earn points, then spend your points promoting your own profiles.</p>
           </div>
+          <button class="balance-pill" id="balancePill" type="button" title="See your balance and activity">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".22"/><path d="M12 6.5v11M15 8.6c-.6-.8-1.7-1.2-3-1.2-1.9 0-3.2 1-3.2 2.3 0 3.1 6.4 1.7 6.4 4.6 0 1.3-1.4 2.3-3.2 2.3-1.4 0-2.6-.5-3.2-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <span id="balanceTop">100</span><small>pts</small>
+          </button>
         </div>
-        <div class="rates">
-          <h3>What each action pays</h3>
-          <div class="rate-row"><span>Follow · Subscribe · Join</span><b>+10 pts</b></div>
-          <div class="rate-row"><span>Like a post or video</span><b>+5 pts</b></div>
-          <div class="rate-row"><span>Comment on a post or video</span><b>+20 pts</b></div>
+
+        <div class="plat-tabs" id="platformFilters" role="group" aria-label="Filter tasks by platform"></div>
+
+        <div class="sec-head">
+          <h2>Top tasks</h2>
+          <span class="count-note"><span id="taskCount">0</span> tasks open</span>
         </div>
-      </section>
+        <div class="rail" id="topRail"></div>
 
-      <nav class="tabs" role="tablist" aria-label="LikeFamous sections">
-        <button class="tab" role="tab" id="tabbtn-earn" aria-selected="true" aria-controls="tab-earn" data-tab="earn" type="button">Earn points <span class="count" id="taskCount">0</span></button>
-        <button class="tab" role="tab" id="tabbtn-promote" aria-selected="false" aria-controls="tab-promote" data-tab="promote" type="button">Promote</button>
-        <button class="tab" role="tab" id="tabbtn-profiles" aria-selected="false" aria-controls="tab-profiles" data-tab="profiles" type="button">My profiles <span class="count" id="profileCount">0</span></button>
-        <button class="tab" role="tab" id="tabbtn-activity" aria-selected="false" aria-controls="tab-activity" data-tab="activity" type="button">Activity</button>
-      </nav>
+        <div class="sec-head">
+          <h2>Categories</h2>
+        </div>
+        <div class="cat-list" id="catList"></div>
 
-      <!-- ============ EARN ============ -->
-      <section id="tab-earn" role="tabpanel" aria-labelledby="tabbtn-earn">
-        <div class="filters" id="platformFilters" aria-label="Filter by platform"></div>
-        <div class="filters" id="typeFilters" aria-label="Filter by task type" style="margin-top:-6px"></div>
+        <div class="sec-head" id="allTasksHead">
+          <h2>All tasks</h2>
+        </div>
+        <div class="filters" id="typeFilters" aria-label="Filter by task type"></div>
         <div class="task-list" id="taskList"></div>
         <div class="empty" id="taskEmpty" hidden>
           <h3>No tasks match those filters</h3>
-          <p>Try another platform or task type — or head to <b>Promote</b> and put your own profile in front of other members.</p>
+          <p>Try another platform or task type — or head to <b>My tasks</b> and put your own profile in front of other members.</p>
         </div>
+
+        <div class="notice" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.6 8-10V5.2L12 2 4 5.2V12c0 6.4 8 10 8 10z"/><path d="m9 11.5 2 2 4-4.5"/></svg>
+          <p><b>About verification:</b> this public demo runs in your browser only, so it can't check follows automatically — points are credited when you claim a task. <b>Automatic verification</b>, where follows are re-checked before points are paid, is available in the full version of LikeFamous.</p>
+        </div>
+
+        <div class="sec-head">
+          <h2>Accounts</h2>
+          <button class="link-btn" type="button" id="addAccountBtn">Add account</button>
+        </div>
+        <div class="acct-list" id="acctList"></div>
       </section>
 
-      <!-- ============ PROMOTE ============ -->
-      <section id="tab-promote" role="tabpanel" aria-labelledby="tabbtn-promote" hidden>
+      <!-- ============ MY TASKS ============ -->
+      <section id="tab-mytasks" role="tabpanel" aria-label="My tasks" hidden>
+        <div class="view-head">
+          <h1>My tasks</h1>
+          <p class="sub">Promote your profiles with the points you've earned. Cancel a campaign any time — unspent points come straight back.</p>
+        </div>
         <div class="grid-2">
           <form class="box" id="campaignForm">
             <h2>Promote a profile</h2>
-            <p class="hint">Spend points to put your profile in the task list. Other members do the action, your count goes up. Cancel any time — unspent points come straight back.</p>
+            <p class="hint">Spend points to put your profile in the task list. Other members do the action, your count goes up.</p>
             <div class="field">
               <label for="campProfile">Profile</label>
               <select id="campProfile"></select>
@@ -404,30 +544,61 @@
             <button class="btn btn-lime btn-block" type="submit">Launch campaign</button>
           </form>
 
-          <div>
-            <div class="box" style="margin-bottom:18px">
-              <h2>My campaigns</h2>
-              <p class="hint">Your campaigns appear in the task list for every other member.</p>
-              <div class="mini-list" id="campaignList"></div>
-              <div class="empty" id="campaignEmpty">
-                <h3>No campaigns yet</h3>
-                <p>Launch your first campaign and watch members start following you.</p>
-              </div>
-            </div>
-            <div class="buy-card" id="buyCard">
-              <h2>Buy points</h2>
-              <p>Skip the tasks and buy points directly to promote your profiles faster. Payments are being set up.</p>
-              <button class="btn btn-lime" type="button" disabled>Buy points <span class="soon-tag">Coming soon</span></button>
+          <div class="box">
+            <h2>My campaigns</h2>
+            <p class="hint">Your campaigns appear in the task list for every other member.</p>
+            <div class="mini-list" id="campaignList"></div>
+            <div class="empty" id="campaignEmpty">
+              <h3>No campaigns yet</h3>
+              <p>Launch your first campaign and watch members start following you.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ PROFILES ============ -->
-      <section id="tab-profiles" role="tabpanel" aria-labelledby="tabbtn-profiles" hidden>
+      <!-- ============ BALANCE ============ -->
+      <section id="tab-balance" role="tabpanel" aria-label="Balance" hidden>
+        <div class="view-head">
+          <h1>Balance</h1>
+          <p class="sub">Every point you earn, spend or get refunded shows up in your activity.</p>
+        </div>
+        <section class="panel" aria-label="Your balance">
+          <div>
+            <p class="label">Your balance</p>
+            <div class="balance-big"><span id="balanceBig">100</span><small>points</small></div>
+            <p class="sub">Earn points by completing tasks in the Market, then spend them promoting your own profiles — more follows, likes and comments.</p>
+          </div>
+          <div class="rates">
+            <h3>What each action pays</h3>
+            <div class="rate-row"><span>Follow · Subscribe · Join</span><b>+10 pts</b></div>
+            <div class="rate-row"><span>Like a post or video</span><b>+5 pts</b></div>
+            <div class="rate-row"><span>Comment on a post or video</span><b>+20 pts</b></div>
+          </div>
+        </section>
+
+        <div class="grid-2">
+          <div class="box">
+            <h2>Activity</h2>
+            <p class="hint">Your points history for this visit.</p>
+            <div class="ledger" id="ledgerList"></div>
+          </div>
+          <div class="buy-card" id="buyCard">
+            <h2>Buy points</h2>
+            <p>Skip the tasks and buy points directly to promote your profiles faster. Payments are being set up.</p>
+            <button class="btn btn-lime" type="button" disabled>Buy points <span class="soon-tag">Coming soon</span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROFILE ============ -->
+      <section id="tab-profile" role="tabpanel" aria-label="Profile" hidden>
+        <div class="view-head">
+          <h1>Profile</h1>
+          <p class="sub">Add the profiles you want to grow — <span id="profileCount">0</span> added so far — then promote them from My tasks.</p>
+        </div>
         <div class="grid-2">
           <form class="box" id="profileForm">
-            <h2>Add a profile</h2>
+            <h2>Add account</h2>
             <p class="hint">Add the profiles you want to grow. One per platform, or as many as you like.</p>
             <div class="safe-note">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.6 8-10V5.2L12 2 4 5.2V12c0 6.4 8 10 8 10z"/><path d="m9 11.5 2 2 4-4.5"/></svg>
@@ -457,15 +628,6 @@
         </div>
       </section>
 
-      <!-- ============ ACTIVITY ============ -->
-      <section id="tab-activity" role="tabpanel" aria-labelledby="tabbtn-activity" hidden>
-        <div class="box">
-          <h2>Activity</h2>
-          <p class="hint">Every point you earn, spend or get refunded shows up here.</p>
-          <div class="ledger" id="ledgerList"></div>
-        </div>
-      </section>
-
       <!-- ============ AD ============ -->
       <aside class="ad" aria-label="Advertisement">
         <div class="ad-tag">Advertisement</div>
@@ -483,10 +645,31 @@
 
       <footer>
         <p><b>LikeFamous</b> — the follow &amp; like exchange. Follow others, earn points, spend points, get followed back.</p>
-        <p>Public demo with example tasks pre-loaded, so you can try the full flow: earn points, promote a profile, cancel and get refunded.</p>
+        <p>Public demo with example tasks pre-loaded, so you can try the full flow: earn points, promote a profile, cancel and get refunded. Everything is kept in this browser only — each visit starts fresh.</p>
         <p>Only public usernames and links are used here. Never share your password with anyone.</p>
       </footer>
     </div>
+
+    <nav class="bottomnav" aria-label="LikeFamous">
+      <div class="bottomnav-in">
+        <button class="bnav-btn" type="button" data-tab="market" aria-selected="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/><path d="M4.5 11.5v6c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-6"/></svg>
+          Task Market
+        </button>
+        <button class="bnav-btn" type="button" data-tab="mytasks" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h4"/></svg>
+          My tasks
+        </button>
+        <button class="bnav-btn" type="button" data-tab="balance" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5z"/><circle cx="16.8" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>
+          Balance
+        </button>
+        <button class="bnav-btn" type="button" data-tab="profile" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.4-3.4 4.2-5 7.5-5s6.1 1.6 7.5 5"/></svg>
+          Profile
+        </button>
+      </div>
+    </nav>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script>
@@ -496,20 +679,30 @@
         /* ---------------- config ---------------- */
         var POINTS = { follow: 10, like: 5, comment: 20 };
         var PLATFORMS = {
-          instagram: { name: "Instagram", followVerb: "Follow", url: function (h) { return "https://www.instagram.com/" + h; } },
-          tiktok:    { name: "TikTok",    followVerb: "Follow", url: function (h) { return "https://www.tiktok.com/@" + h; } },
-          telegram:  { name: "Telegram",  followVerb: "Join",   url: function (h) { return "https://t.me/" + h; } },
-          youtube:   { name: "YouTube",   followVerb: "Subscribe", url: function (h) { return "https://www.youtube.com/@" + h; } },
-          x:         { name: "X (Twitter)", followVerb: "Follow", url: function (h) { return "https://x.com/" + h; } }
+          instagram: { name: "Instagram", followVerb: "Follow", tabColor: "#e1306c", url: function (h) { return "https://www.instagram.com/" + h; } },
+          tiktok:    { name: "TikTok",    followVerb: "Follow", tabColor: "var(--ink)", url: function (h) { return "https://www.tiktok.com/@" + h; } },
+          telegram:  { name: "Telegram",  followVerb: "Join",   tabColor: "#229ed9", url: function (h) { return "https://t.me/" + h; } },
+          youtube:   { name: "YouTube",   followVerb: "Subscribe", tabColor: "#ff0033", url: function (h) { return "https://www.youtube.com/@" + h; } },
+          x:         { name: "X (Twitter)", followVerb: "Follow", tabColor: "var(--ink)", url: function (h) { return "https://x.com/" + h; } }
         };
+        var CATEGORIES = [
+          { type: "follow", name: "Friends", desc: "Follow · Subscribe · Join", cls: "cat-friends",
+            icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.8-3 2.9-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><path d="M15.5 5.4a3.2 3.2 0 0 1 0 5.9M17.8 15.3c1.4.7 2.3 2 2.7 4.2"/></svg>' },
+          { type: "like", name: "Like", desc: "Like a post or video", cls: "cat-like",
+            icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.4 5 7.8 5c1.7 0 3.3.9 4.2 2.4C12.9 5.9 14.5 5 16.2 5c2.4 0 4.3 2 4.3 4.6 0 3.7-3.5 6.9-8.5 10.9z"/></svg>' },
+          { type: "comment", name: "Comment", desc: "Comment on a post or video", cls: "cat-comment",
+            icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2.3-2.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>' }
+        ];
         var ICONS = {
           instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>',
           tiktok: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.1 1.8 3.7 3.9 4v3c-1.5 0-2.9-.5-3.9-1.3v6.2c0 3.4-2.5 5.7-5.7 5.7-3 0-5.4-2.3-5.4-5.3 0-3.1 2.6-5.5 5.9-5.3v3.1c-1.4-.3-2.8.6-2.8 2.1 0 1.3 1 2.3 2.3 2.3 1.6 0 2.7-1.1 2.7-2.9V3h3z"/></svg>',
           telegram: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.4 18.8 19c-.2 1-.9 1.3-1.8.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.2 13.1l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.6.2 1.4.9z"/></svg>',
           youtube: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.3 9.4v5.2l4.6-2.6z" fill="currentColor"/></svg>',
-          x: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L2 3h6.4l4.4 5.9L17.8 3zm-1.1 16.1h1.7L7.5 4.7H5.7l11 14.4z"/></svg>'
+          x: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L2 3h6.4l4.4 5.9L17.8 3zm-1.1 16.1h1.7L7.5 4.7H5.7l11 14.4z"/></svg>',
+          all: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>'
         };
         var COIN = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".28"/><path d="M12 6.5v11M15 8.6c-.6-.8-1.7-1.2-3-1.2-1.9 0-3.2 1-3.2 2.3 0 3.1 6.4 1.7 6.4 4.6 0 1.3-1.4 2.3-3.2 2.3-1.4 0-2.6-.5-3.2-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
+        var CHEV = '<span class="cat-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></span>';
 
         function esc(s) {
           return String(s).replace(/[&<>"']/g, function (c) {
@@ -524,11 +717,20 @@
           if (task.type === "like") return "Like";
           return "Comment";
         }
+        function catName(type) {
+          return type === "follow" ? "Friends" : type === "like" ? "Like" : "Comment";
+        }
         function taskTitle(task) {
           var verb = actionLabel(task);
           if (task.type === "follow") return verb + " " + task.handle;
           if (task.type === "like") return "Like " + task.handle + "'s " + (task.platform === "instagram" ? "post" : "video");
           return "Comment on " + task.handle + "'s " + (task.platform === "instagram" ? "post" : "video");
+        }
+        function initials(handle) {
+          var clean = handle.replace(/^@/, "");
+          var parts = clean.split(/[\s.]+/).filter(Boolean);
+          if (parts.length > 1) return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+          return clean.slice(0, 2).toUpperCase();
         }
 
         /* ---------------- state ---------------- */
@@ -596,33 +798,35 @@
           renderCampCost();
         }
 
-        /* ---------------- tabs ---------------- */
+        /* ---------------- views (bottom nav) ---------------- */
+        var VIEWS = ["market", "mytasks", "balance", "profile"];
         function showTab(name) {
-          ["earn", "promote", "profiles", "activity"].forEach(function (n) {
+          VIEWS.forEach(function (n) {
             $("tab-" + n).hidden = n !== name;
-            $("tabbtn-" + n).setAttribute("aria-selected", n === name ? "true" : "false");
           });
+          document.querySelectorAll(".bnav-btn").forEach(function (btn) {
+            btn.setAttribute("aria-selected", btn.getAttribute("data-tab") === name ? "true" : "false");
+          });
+          window.scrollTo({ top: 0 });
         }
-        document.querySelectorAll(".tab").forEach(function (btn) {
+        document.querySelectorAll(".bnav-btn").forEach(function (btn) {
           btn.addEventListener("click", function () { showTab(btn.getAttribute("data-tab")); });
         });
-        document.querySelectorAll("[data-goto]").forEach(function (btn) {
-          btn.addEventListener("click", function () { showTab(btn.getAttribute("data-goto")); });
-        });
-        $("balancePill").addEventListener("click", function () { showTab("activity"); });
+        $("balancePill").addEventListener("click", function () { showTab("balance"); });
+        $("addAccountBtn").addEventListener("click", function () { showTab("profile"); });
 
-        /* ---------------- filters ---------------- */
+        /* ---------------- platform tabs & type filters ---------------- */
         function buildFilters() {
           var pf = $("platformFilters");
-          var html = '<button class="chip" type="button" data-pf="all" aria-pressed="true">All platforms</button>';
+          var html = '<button class="plat-tab" type="button" data-pf="all" aria-pressed="true" style="--tc:var(--accent-deep)">' + ICONS.all + "All</button>";
           Object.keys(PLATFORMS).forEach(function (key) {
-            html += '<button class="chip" type="button" data-pf="' + key + '" aria-pressed="false">' + ICONS[key] + esc(PLATFORMS[key].name) + "</button>";
+            html += '<button class="plat-tab" type="button" data-pf="' + key + '" aria-pressed="false" style="--tc:' + PLATFORMS[key].tabColor + '">' + ICONS[key] + esc(PLATFORMS[key].name.replace(" (Twitter)", "")) + "</button>";
           });
           pf.innerHTML = html;
-          pf.querySelectorAll("[data-pf]").forEach(function (chip) {
-            chip.addEventListener("click", function () {
-              state.filterPlatform = chip.getAttribute("data-pf");
-              pf.querySelectorAll("[data-pf]").forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+          pf.querySelectorAll("[data-pf]").forEach(function (tab) {
+            tab.addEventListener("click", function () {
+              state.filterPlatform = tab.getAttribute("data-pf");
+              pf.querySelectorAll("[data-pf]").forEach(function (c) { c.setAttribute("aria-pressed", c === tab ? "true" : "false"); });
               renderTasks();
             });
           });
@@ -633,51 +837,39 @@
             return '<button class="chip" type="button" data-tf="' + t[0] + '" aria-pressed="' + (t[0] === "all") + '">' + t[1] + "</button>";
           }).join("");
           tf.querySelectorAll("[data-tf]").forEach(function (chip) {
-            chip.addEventListener("click", function () {
-              state.filterType = chip.getAttribute("data-tf");
-              tf.querySelectorAll("[data-tf]").forEach(function (c) { c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
-              renderTasks();
-            });
+            chip.addEventListener("click", function () { setTypeFilter(chip.getAttribute("data-tf")); });
           });
+        }
+        function setTypeFilter(type) {
+          state.filterType = type;
+          $("typeFilters").querySelectorAll("[data-tf]").forEach(function (c) {
+            c.setAttribute("aria-pressed", c.getAttribute("data-tf") === type ? "true" : "false");
+          });
+          renderTasks();
         }
 
         /* ---------------- tasks ---------------- */
+        function openTasks() {
+          return state.tasks.filter(function (t) { return t.remaining > 0 && !state.claimed[t.id]; });
+        }
         function visibleTasks() {
-          return state.tasks.filter(function (t) {
-            if (t.remaining <= 0) return false;
-            if (state.claimed[t.id]) return false;
+          return openTasks().filter(function (t) {
             if (state.filterPlatform !== "all" && t.platform !== state.filterPlatform) return false;
             if (state.filterType !== "all" && t.type !== state.filterType) return false;
             return true;
           });
         }
-        function renderTasks() {
-          var list = $("taskList");
-          var tasks = visibleTasks();
-          $("taskEmpty").hidden = tasks.length > 0;
-          $("taskCount").textContent = state.tasks.filter(function (t) { return !t.own && t.remaining > 0 && !state.claimed[t.id]; }).length;
-          list.innerHTML = tasks.map(function (t) {
-            var pts = POINTS[t.type];
-            var opened = !!state.opened[t.id];
-            var actions;
-            if (t.own) {
-              actions = '<button class="btn-sm" type="button" data-viewcamp="' + t.campaignId + '">View campaign</button>';
-            } else if (opened) {
-              actions = '<button class="btn-sm" type="button" data-open="' + t.id + '">Open again</button>' +
-                        '<button class="btn-sm primary" type="button" data-claim="' + t.id + '">Claim +' + pts + ' pts</button>';
-            } else {
-              actions = '<button class="btn-sm primary" type="button" data-open="' + t.id + '">Open &amp; ' + actionLabel(t).toLowerCase() + "</button>";
-            }
-            return '<article class="task" data-task="' + t.id + '">' +
-              '<div class="picon p-' + t.platform + '">' + ICONS[t.platform] + "</div>" +
-              '<div class="task-main"><div class="task-title"><span class="handle">' + esc(taskTitle(t)) + "</span>" +
-              (t.own ? '<span class="own-tag">Your campaign</span>' : '<span class="own-tag">Example</span>') + "</div>" +
-              '<div class="task-meta">' + esc(PLATFORMS[t.platform].name) + " · " + esc(t.note) + " · " + t.remaining + " spots left</div></div>" +
-              '<div class="task-side"><span class="pts">' + COIN + "+" + pts + '</span><div class="task-actions">' + actions + "</div></div>" +
-              "</article>";
-          }).join("");
-
-          list.querySelectorAll("[data-open]").forEach(function (btn) {
+        function taskActions(t) {
+          var pts = POINTS[t.type];
+          if (t.own) return '<button class="btn-sm" type="button" data-viewcamp="' + t.campaignId + '">View campaign</button>';
+          if (state.opened[t.id]) {
+            return '<button class="btn-sm" type="button" data-open="' + t.id + '">Open again</button>' +
+                   '<button class="btn-sm primary" type="button" data-claim="' + t.id + '">Claim +' + pts + ' pts</button>';
+          }
+          return '<button class="btn-sm primary" type="button" data-open="' + t.id + '">Open &amp; ' + actionLabel(t).toLowerCase() + "</button>";
+        }
+        function bindTaskButtons(scope) {
+          scope.querySelectorAll("[data-open]").forEach(function (btn) {
             btn.addEventListener("click", function () {
               var t = findTask(+btn.getAttribute("data-open"));
               if (!t) return;
@@ -687,11 +879,69 @@
               toast("Opened " + PLATFORMS[t.platform].name + " — do the " + actionLabel(t).toLowerCase() + ", then claim your points.");
             });
           });
-          list.querySelectorAll("[data-claim]").forEach(function (btn) {
+          scope.querySelectorAll("[data-claim]").forEach(function (btn) {
             btn.addEventListener("click", function () { claimTask(+btn.getAttribute("data-claim"), btn); });
           });
-          list.querySelectorAll("[data-viewcamp]").forEach(function (btn) {
-            btn.addEventListener("click", function () { showTab("promote"); });
+          scope.querySelectorAll("[data-viewcamp]").forEach(function (btn) {
+            btn.addEventListener("click", function () { showTab("mytasks"); });
+          });
+        }
+        function renderTasks() {
+          var tasks = visibleTasks();
+          $("taskEmpty").hidden = tasks.length > 0;
+          $("taskCount").textContent = openTasks().filter(function (t) { return !t.own; }).length;
+
+          /* full list */
+          var list = $("taskList");
+          list.innerHTML = tasks.map(function (t) {
+            var pts = POINTS[t.type];
+            return '<article class="task" data-task="' + t.id + '">' +
+              '<div class="picon p-' + t.platform + '">' + ICONS[t.platform] + "</div>" +
+              '<div class="task-main"><div class="task-title"><span class="handle">' + esc(taskTitle(t)) + "</span>" +
+              (t.own ? '<span class="own-tag">Your campaign</span>' : '<span class="own-tag">Example</span>') + "</div>" +
+              '<div class="task-meta">' + esc(PLATFORMS[t.platform].name) + " · " + esc(t.note) + " · " + t.remaining + " spots left</div></div>" +
+              '<div class="task-side"><span class="pts">' + COIN + "+" + pts + '</span><div class="task-actions">' + taskActions(t) + "</div></div>" +
+              "</article>";
+          }).join("");
+          bindTaskButtons(list);
+
+          /* top tasks rail — highest-paying open tasks first */
+          var top = tasks.slice().sort(function (a, b) {
+            return (POINTS[b.type] - POINTS[a.type]) || (b.remaining - a.remaining);
+          }).slice(0, 8);
+          var rail = $("topRail");
+          rail.innerHTML = top.map(function (t) {
+            var pts = POINTS[t.type];
+            return '<article class="top-card" data-task="' + t.id + '">' +
+              '<div class="avatar av-' + t.platform + '">' + esc(initials(t.handle)) +
+              '<span class="badge p-' + t.platform + '">' + ICONS[t.platform] + "</span></div>" +
+              '<div class="top-title">' + esc(taskTitle(t)) + "</div>" +
+              '<div class="top-cat">' + catName(t.type) + " · " + esc(PLATFORMS[t.platform].name.replace(" (Twitter)", "")) + "</div>" +
+              (t.own ? '<span class="own-tag">Your campaign</span>' : '<span class="own-tag">Example</span>') +
+              '<span class="top-pts">' + COIN + pts + " pts</span>" +
+              '<div class="top-act">' + taskActions(t) + "</div>" +
+              "</article>";
+          }).join("");
+          bindTaskButtons(rail);
+
+          renderCategories();
+        }
+        function renderCategories() {
+          var base = openTasks().filter(function (t) {
+            return state.filterPlatform === "all" || t.platform === state.filterPlatform;
+          });
+          $("catList").innerHTML = CATEGORIES.map(function (c) {
+            var count = base.filter(function (t) { return t.type === c.type; }).length;
+            return '<button class="cat-row" type="button" data-cat="' + c.type + '">' +
+              '<span class="cat-ico ' + c.cls + '">' + c.icon + "</span>" +
+              '<span class="cat-main"><b>' + c.name + '</b><span>from ' + POINTS[c.type] + " pts · " + esc(c.desc) + "</span></span>" +
+              '<span class="cat-count">' + count + "</span>" + CHEV + "</button>";
+          }).join("");
+          $("catList").querySelectorAll("[data-cat]").forEach(function (row) {
+            row.addEventListener("click", function () {
+              setTypeFilter(row.getAttribute("data-cat"));
+              $("allTasksHead").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
           });
         }
         function findTask(id) {
@@ -710,18 +960,32 @@
             t.remaining -= 1;
             addLedger(actionLabel(t) + " " + t.handle + " on " + PLATFORMS[t.platform].name, pts);
             renderBalance();
-            var card = document.querySelector('[data-task="' + t.id + '"]');
-            if (card) {
-              card.classList.add("leaving");
-              setTimeout(renderTasks, 320);
-            } else {
-              renderTasks();
-            }
+            var cards = document.querySelectorAll('[data-task="' + t.id + '"]');
+            cards.forEach(function (card) { card.classList.add("leaving"); });
+            setTimeout(renderTasks, 320);
             toast("+" + pts + " points — " + actionLabel(t).toLowerCase() + " confirmed.");
           }, 1400);
         }
 
-        /* ---------------- profiles ---------------- */
+        /* ---------------- accounts & profiles ---------------- */
+        function renderAccounts() {
+          $("acctList").innerHTML = Object.keys(PLATFORMS).map(function (key) {
+            var mine = state.profiles.filter(function (p) { return p.platform === key; });
+            var status = mine.length
+              ? '<span class="linked">' + esc(mine.map(function (p) { return "@" + p.handle; }).join(", ")) + " · linked</span>"
+              : "<span>Account is not linked</span>";
+            return '<button class="acct-row" type="button" data-acct="' + key + '">' +
+              '<span class="picon p-' + key + '">' + ICONS[key] + "</span>" +
+              '<span class="acct-main"><b>' + esc(PLATFORMS[key].name.replace(" (Twitter)", "")) + "</b>" + status + "</span>" + CHEV + "</button>";
+          }).join("");
+          $("acctList").querySelectorAll("[data-acct]").forEach(function (row) {
+            row.addEventListener("click", function () {
+              state.profilePlatform = row.getAttribute("data-acct");
+              buildProfilePicker();
+              showTab("profile");
+            });
+          });
+        }
         function buildProfilePicker() {
           var picker = $("profilePlatformPicker");
           picker.innerHTML = Object.keys(PLATFORMS).map(function (key) {
@@ -762,6 +1026,7 @@
             btn.addEventListener("click", function () { removeProfile(+btn.getAttribute("data-delprofile")); });
           });
           renderCampProfileOptions();
+          renderAccounts();
         }
         function removeProfile(id) {
           var p = null;
@@ -786,7 +1051,7 @@
           state.profiles.push(profile);
           $("profileInput").value = "";
           renderProfiles();
-          toast("Added @" + handle + " — now promote it from the Promote tab.");
+          toast("Added @" + handle + " — now promote it from My tasks.");
         });
 
         /* ---------------- campaigns ---------------- */
@@ -829,10 +1094,10 @@
           var err = $("campError");
           var profileId = +$("campProfile").value;
           var profile = state.profiles.filter(function (p) { return p.id === profileId; })[0];
-          if (!profile) { err.textContent = "Add a profile first (My profiles tab), then promote it."; return; }
+          if (!profile) { err.textContent = "Add a profile first (Profile tab), then promote it."; return; }
           var cost = campUnitCost() * state.campQty;
           if (cost > state.balance) {
-            err.textContent = "Not enough points — this costs " + cost + " pts and you have " + state.balance + ". Earn more in the Earn tab.";
+            err.textContent = "Not enough points — this costs " + cost + " pts and you have " + state.balance + ". Earn more in the Market.";
             return;
           }
           err.textContent = "";
@@ -922,7 +1187,7 @@
 
         /* ---------------- buy points / ad ---------------- */
         function buySoon() {
-          showTab("promote");
+          showTab("balance");
           $("buyCard").scrollIntoView({ behavior: "smooth", block: "center" });
           toast("Buying points is coming soon — earn points with tasks for now.");
         }
